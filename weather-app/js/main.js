@@ -2,7 +2,7 @@
 
 const http  = new slhttp();
 const baseURL = "https://api.openweathermap.org/data/2.5/forecast";
-const geoBaseURL = "http://api.openweathermap.org/geo/1.0/reverse"; 
+const geoBaseURL = "https://api.openweathermap.org/geo/1.0/reverse"; 
 const APIKey = "f8619bb13757313574e9d1209340ca1c";
 const units = "metric";
 const NO_OF_RECENT_FORECASTS = 6;
