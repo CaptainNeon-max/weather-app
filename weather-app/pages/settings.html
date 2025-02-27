@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <!-- /Vendor CSS -->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/font.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- /Custom CSS -->
+</head>
+
+<body class="bg-primary text-white">
+    <!-- Sidebar for navigation (visible on larger screens) -->
+    <aside class="position-fixed top-0 start-0 h-100 d-sm-none d-md-none d-lg-block d-xl-block d-none">
+        <div class="d-flex flex-column align-items-center py-4 bg-secondary rounded-5 h-100">
+            <div class="d-flex flex-column gap-5">
+                <!-- Logo Section -->
+                <div class="logo mx-auto">
+                    <img src="../images/logo.png" class="w-100 h-100">
+                </div>
+                <!-- Navigation Links -->
+                <ul class="d-flex flex-column gap-4 list-unstyled p-2">
+                    <li>
+                        <a href="../index.html" class="text-decoration-none d-flex flex-column gap-2 align-items-center text-capitalize text-gray-500 p-2 fs-6">
+                            <i class="fa-solid fa-cloud-sun-rain"></i>
+                            weather
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./cities.html" class="text-decoration-none d-flex flex-column gap-2 align-items-center text-capitalize text-gray-500 p-2 fs-6">
+                            <i class="fa-solid fa-list"></i>
+                            cities
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./maps.html" class="text-decoration-none d-flex flex-column gap-2 align-items-center text-capitalize text-gray-500 p-2 fs-6">
+                            <i class="fa-solid fa-map"></i>
+                            maps
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-white text-decoration-none d-flex flex-column gap-2 align-items-center text-capitalize p-2 fs-6">
+                            <i class="fa-solid fa-sliders"></i>
+                            settings
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+    <!-- /Sidebar for navigation (visible on larger screens) -->
+
+    <!-- Main container -->
+    <div class="container my-2 position-relative mx-lg-0 mx-xl-0 mx-xl-0 start-lg-7 start-xl-7">
+        <div class="row py-lg-4 w-100 m-0 p-0">
+            <!-- Main content area -->
+            <div class="content col col-lg-12 col-md-12 ms-lg-5 p-0">
+                <!-- Hamburger -->
+                <button class="btn d-lg-none d-xl-none d-sm-block d-md-block d-block text-white fs-3 my-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <!-- /Hamburger -->
+
+                <!-- Search bar -->
+                <div class="row">
+                    <div class="col col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-secondary border-0 p-2 text-white"
+                                placeholder="Search for cities" aria-label="Username" aria-describedby="basic-addon1" />
+                        </div>
+                    </div>
+                </div>
+                <!-- /Search bar -->
+
+                <div class="row my-1 flex-xl-row flex-lg-column flex-sm-column flex-md-column flex-column">
+                    <!-- Units and settings section -->
+                    <div class="col col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <!-- Units card -->
+                        <div class="card bg-transparent w-100">
+                            <div class="card-header ps-0 pb-0">
+                                <div class="card-title text-white fs-5 fw-bold">
+                                    Units
+                                </div>
+                            </div>
+                            <div class="card-body bg-secondary rounded-3">
+                                <!-- Temperature unit selection -->
+                                <div class="" id="temperature">
+                                    <h3 class="text-uppercase text-gray-500 my-2 fw-bold fs-7">temperature</h3>
+                                    <div class="nav nav-tabs bg-primary rounded-3 p-1 border-0" id="nav-tab"
+                                        role="tablist">
+                                        <button
+                                            class="nav-link w-50 bg-active-secondary text-capitalize text-active-white rounded-3 border-0 text-gray-500 p-2"
+                                            id="celsius" data-bs-toggle="tab" data-bs-target="#nav-celsius"
+                                            type="button" role="tab" aria-controls="nav-celsius" aria-selected="true">
+                                            celsius
+                                        </button>
+                                        <button
+                                            class="nav-link w-50 bg-active-secondary text-capitalize text-active-white rounded-3 border-0 text-gray-500 p-2"
+                                            id="fahrenheit" data-bs-toggle="tab"
+                                            data-bs-target="#nav-fahrenheit" type="button" role="tab"
+                                            aria-controls="nav-fahrenheit" aria-selected="false">
+                                            fahrenheit
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- /Temperature unit selection -->
+
+                                <!-- Wind speed unit selection -->
+                                <div class="my-4" id="windSpeed">
+                                    <h3 class="text-uppercase text-gray-500 my-2 fw-bold fs-7">wind speed</h3>
+                                    <div class="nav nav-tabs bg-primary rounded-3 p-1 border-0" id="nav-tab"
+                                        role="tablist">
+                                        <button
+                                            class="nav-link col-4 bg-active-secondary text-active-white rounded-3 border-0 text-gray-500 p-2"
+                                            id="kmh" data-bs-toggle="tab" data-bs-target="#nav-km" type="button"
+                                            role="tab" aria-controls="nav-km" aria-selected="true">
+                                            km/h
+                                        </button>
+                                        <button
+                                            class="nav-link col-4 bg-active-secondary text-active-white rounded-3 border-0 text-gray-500 p-2"
+                                            id="ms" data-bs-toggle="tab" data-bs-target="#nav-m" type="button"
+                                            role="tab" aria-controls="nav-m" aria-selected="false">
+                                            m/s
+                                        </button>
+                                        <button
+                                            class="nav-link col-4 bg-active-secondary text-capitalize text-active-white rounded-3 border-0 text-gray-500 p-2"
+                                            id="knots" data-bs-toggle="tab" data-bs-target="#nav-knots"
+                                            type="button" role="tab" aria-controls="nav-m" aria-selected="false">
+                                            knots
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- /Wind speed unit selection -->
+
+                                <!-- Pressure unit selection -->
+                                <div class="my-4" id="pressure">
+                                    <h3 class="text-uppercase text-gray-500 my-2 fw-bold fs-7">pressure</h3>
+                                    <div class="nav nav-tabs bg-primary rounded-3 p-1 border-0" id="nav-tab"
+                                        role="tablist">
+                                        <button
+                                            class="nav-link col-3 bg-active-secondary text-active-white rounded-3 border-0 text-gray-500 p-2"
+                                            id="hpa" data-bs-toggle="tab" data-bs-target="#nav-hpa"
+                                            type="button" role="tab" aria-controls="nav-hpa" aria-selected="true">
+                                            hPa
+                                        </button>
+                                        <button
+                                            class="nav-link col-3 bg-active-secondary text-capitalize text-active-white rounded-3 border-0 text-gray-500 p-2"
+                                            id="inches" data-bs-toggle="tab" data-bs-target="#nav-inches"
+                                            type="button" role="tab" aria-controls="nav-inches" aria-selected="false">
+                                            inches
+                                        </button>
+                                        <button
+                                            class="nav-link col-3 bg-active-secondary text-active-white rounded-3 border-0 text-gray-500 p-2"
+                                            id="kpa" data-bs-toggle="tab" data-bs-target="#nav-knots"
+                                            type="button" role="tab" aria-controls="nav-kpa" aria-selected="false">
+                                            kPa
+                                        </button>
+                                        <button
+                                            class="nav-link col-3 bg-active-secondary text-active-white rounded-3 border-0 text-gray-500 p-2"
+                                            id="mm" data-bs-toggle="tab" data-bs-target="#nav-knots"
+                                            type="button" role="tab" aria-controls="nav-mm" aria-selected="false">
+                                            mm
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- /Pressure unit selection -->
+
+                                <!-- Precipitation unit selection -->
+                                <div class="my-4" id="precipitation">
+                                    <h3 class="text-uppercase text-gray-500 my-2 fw-bold fs-7">precipitation</h3>
+                                    <div class="nav nav-tabs bg-primary rounded-3 p-1 border-0" id="nav-tab"
+                                        role="tablist">
+                                        <button
+                                            class="nav-link w-50 bg-active-secondary text-capitalize text-active-white rounded-3 border-0 text-gray-500 p-2"
+                                            id="milimetersPrecipitation" data-bs-toggle="tab"
+                                            data-bs-target="#nav-milimeters" type="button" role="tab"
+                                            aria-controls="nav-milimeters" aria-selected="true">
+                                            milimeters
+                                        </button>
+                                        <button
+                                            class="nav-link w-50 bg-active-secondary text-capitalize text-active-white rounded-3 border-0 text-gray-500 p-2"
+                                            id="inchesPrecipitation" data-bs-toggle="tab" data-bs-target="#nav-inches"
+                                            type="button" role="tab" aria-controls="nav-inches" aria-selected="false">
+                                            inches
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- /Precipitation unit selection -->
+
+                                <!-- Distance unit selection -->
+                                <div class="my-4" id="distance">
+                                    <h3 class="text-uppercase text-gray-500 my-2 fw-bold fs-7">Distance</h3>
+                                    <div class="nav nav-tabs bg-primary rounded-3 p-1 border-0" id="nav-tab"
+                                        role="tablist">
+                                        <button
+                                            class="nav-link w-50 bg-active-secondary text-capitalize text-active-white rounded-3 border-0 text-gray-500 p-2"
+                                            id="kilometers" data-bs-toggle="tab"
+                                            data-bs-target="#nav-kilometers" type="button" role="tab"
+                                            aria-controls="nav-kilometers" aria-selected="true">
+                                            kilometers
+                                        </button>
+                                        <button
+                                            class="nav-link w-50 bg-active-secondary text-capitalize text-active-white rounded-3 border-0 text-gray-500 p-2"
+                                            id="miles" data-bs-toggle="tab" data-bs-target="#nav-miles"
+                                            type="button" role="tab" aria-controls="nav-miles" aria-selected="false">
+                                            miles
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- /Distance unit selection -->
+                            </div>
+                        </div>
+                        <!-- /Units card -->
+
+                        <!-- Notifications card -->
+                        <div class="card bg-transparent w-100 my-4">
+                            <div class="card-header ps-0 pb-0">
+                                <div class="card-title text-white fs-5 fw-bold text-capitalize">
+                                    notifications
+                                </div>
+                            </div>
+                            <div class="card-body bg-secondary rounded-3">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div class="d-flex flex-column">
+                                        <span class="text-gray-300 text-capitalize fw-bold">notifications</span>
+                                        <span class="text-gray-500 text-capitalize fs-7">be aware of the weather</span>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch"
+                                            id="flexSwitchCheckDefault" checked>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Notifications card -->
+
+                        <!-- General settings card -->
+                        <div class="card bg-transparent w-100 my-2">
+                            <div class="card-header ps-0 pb-0">
+                                <div class="card-title text-white fs-5 fw-bold text-capitalize">
+                                    general
+                                </div>
+                            </div>
+                            <div class="card-body bg-secondary rounded-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-gray-300 text-capitalize fw-bold">12-Hour Time</span>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch"
+                                            id="flexSwitchCheckDefault" checked>
+                                    </div>
+                                </div>
+                                <div class="separator border-gray-700 my-3"></div>
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div class="d-flex flex-column">
+                                        <span class="text-gray-300 text-capitalize fw-bold">location</span>
+                                        <span class="text-gray-500 text-capitalize fs-7">Get weather of your
+                                            location</span>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch"
+                                            id="flexSwitchCheckDefault" checked>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /General settings card -->
+                    </div>
+                    <!-- /Units and settings section -->
+
+                     <!-- Advanced and newsletter section -->
+                    <div class="col col-xl-4 col-lg-12 h-50 col-md-12 col-sm-12 mb-2">
+                        <!-- Advanced features card -->
+                        <div class="card bg-secondary rounded-3 mt-5 p-4">
+                            <div class="card-header border-gray-600">
+                                <div class="card-title text-capitalize fs-3 text-white fw-bold">
+                                    advanced
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="fw-bold text-white text-capitalize fs-6">get new experience</h3>
+                                <ul class="text-gray-500 text-capitalize fs-7 ps-3">
+                                    <li>ad free</li>
+                                    <li>health activities overview</li>
+                                    <li>severe weather notifications</li>
+                                </ul>
+                                <div
+                                    class="w-100 h-100 bg-light-secondary rounded-4 fs-1 fw-bolder px-4 py-2 text-center text-white border">
+                                    $5.99<span class="fs-6 text-gray-600 fw-normal">/month</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Advanced features card -->
+
+                        <!-- Newsletter card -->
+                        <div class="card bg-secondary rounded-3 mt-2 p-4">
+                            <div class="card-header border-gray-600 ps-0">
+                                <div class="card-title fs-4 text-white fw-bold">
+                                    Never forget your umbrella!
+                                </div>
+                            </div>
+                            <div class="card-body ps-0">
+                                <h3 class="text-gray-500 fs-7">Sign up for our daily weather newsletter,personalized
+                                    just for you.</h3>
+                                <button class="rounded-pill text-capitalize btn btn-blue w-100 mt-3">sign up</button>
+                            </div>
+                        </div>
+                        <!-- /Newsletter card -->
+                    </div>
+                </div>
+            </div>
+            <!-- /Main content area -->
+        </div>
+    </div>
+    <!-- /Main container -->
+
+    <!-- Bootstrap OffCanvas -->
+    <div class="offcanvas offcanvas-start bg-secondary text-white" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header d-flex align-items-center">
+            <div class="d-flex align-items-center gap-1">
+                <img src="../images/logo.png" class="img-fluid w-20">
+                <h5 class="offcanvas-title" id="offcanvasTopLabel">Breeze</h5>
+            </div>
+            <button type="button" class="btn-close btn-close-white w-25 h-25" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <!-- Navigation links -->
+            <ul class="d-flex flex-column gap-4 list-unstyled p-3">
+                <li>
+                    <a href="../index.html"
+                        class="text-decoration-none d-flex gap-2 align-items-center text-gray-500 text-capitalize p-2 fs-6">
+                        <i class="fa-solid fa-cloud-sun-rain"></i>
+                        weather
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="text-decoration-none d-flex gap-2 align-items-center text-gray-500 text-capitalize p-2 fs-6">
+                        <i class="fa-solid fa-list"></i>
+                        cities
+                    </a>
+                </li>
+                <li>
+                    <a href="./maps.html"
+                        class="text-decoration-none d-flex gap-2 align-items-center text-capitalize text-gray-500 p-2 fs-6">
+                        <i class="fa-solid fa-map"></i>
+                        maps
+                    </a>
+                </li>
+                <li>
+                    <a href="./settings.html"
+                        class="text-white text-decoration-none d-flex gap-2 align-items-center text-capitalize p-2 fs-6">
+                        <i class="fa-solid fa-sliders"></i>
+                        settings
+                    </a>
+                </li>
+            </ul>
+            <!-- Navigation links -->
+        </div>
+    </div>
+    <!-- /Bootstrap OffCanvas -->
+
+    <!-- Vendor Js -->
+    <script src="../js/bootstrap.js"></script>
+    <!-- /Vendor Js -->
+
+    <!-- Custom JS -->
+     <script src="../js/settings.js"></script>
+    <!-- /Custom JS -->
+</body>
+
+</html>

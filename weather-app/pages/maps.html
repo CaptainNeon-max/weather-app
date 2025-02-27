@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <!-- /Vendor CSS -->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/font.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- /Custom CSS -->
+</head>
+<body class="bg-primary text-white">
+    <!-- Sidebar for navigation (visible on larger screens) -->
+    <aside class="position-fixed top-0 start-0 h-100 d-sm-none d-md-none d-lg-block d-xl-block d-none">
+        <div class="d-flex flex-column align-items-center py-4 bg-secondary rounded-5 h-100">
+            <div class="d-flex flex-column gap-5">
+                <!-- Logo Section -->
+                <div class="logo mx-auto">
+                    <img src="../images/logo.png" class="w-100 h-100">
+                </div>
+                <!-- Navigation Links -->
+                <ul class="d-flex flex-column gap-4 list-unstyled p-2">
+                    <li>
+                        <a href="../index.html" class="text-decoration-none d-flex flex-column gap-2 align-items-center text-capitalize text-gray-500 p-2 fs-6">
+                            <i class="fa-solid fa-cloud-sun-rain"></i>
+                            weather
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./cities.html" class="text-decoration-none d-flex flex-column gap-2 align-items-center text-capitalize text-gray-500 p-2 fs-6">
+                            <i class="fa-solid fa-list"></i>
+                            cities
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-white text-decoration-none d-flex flex-column gap-2 align-items-center text-capitalize p-2 fs-6">
+                            <i class="fa-solid fa-map"></i>
+                            maps
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./settings.html" class="text-decoration-none d-flex flex-column gap-2 align-items-center text-capitalize text-gray-500 p-2 fs-6">
+                            <i class="fa-solid fa-sliders"></i>
+                            settings
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+    <!-- /Sidebar for navigation (visible on larger screens) -->
+
+    <!-- Main container -->
+    <div class="container my-2 position-relative mx-lg-0 mx-xl-0 mx-xl-0 start-lg-7 start-xl-7">
+        <div class="row py-lg-4 w-100 m-0 p-0">
+            <!-- Main content area -->
+            <div class="content col col-lg-12 col-md-12 ms-lg-5 p-0">
+                <!-- Hamburger -->
+                <button class="btn d-lg-none d-xl-none d-sm-block d-md-block d-block text-white fs-3 my-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <!-- /Hamburger -->
+
+                <!-- Search bar -->
+                <div class="row">
+                    <div class="col col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-secondary border-0 p-2 text-white"
+                                placeholder="Search for cities" aria-label="Username" aria-describedby="basic-addon1" />
+                        </div>
+                    </div>
+                </div>
+                <!-- /Search bar -->
+
+                <!-- Maps and weather details section -->
+                <div class="row my-2 flex-xl-row flex-lg-column flex-sm-column flex-md-column flex-column">
+                    <div class="col col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12" style="height: 700px;">
+                        <!-- Map with location cards -->
+                        <div class="maps w-100 h-100 rounded-4 position-relative h-100">
+                            <!-- Map location card 1 -->
+                            <div class="map-location-card-1 bg-secondary rounded-4 w-xl-15 w-lg-15 w-sm-15 w-md-15 w-xs-20 d-flex flex-column justify-content-between align-items-center p-4 position-absolute">
+                                <span class="fs-4 text-gray-300 fw-bold">Mulund</span>
+                                <img src="../images/rainy.png" class="img-fluid w-100 h-100">
+                                <span class="fs-5 text-gray-500">27<sup>o</sup></span>
+                            </div>
+                            <!-- /Map location card 1 -->
+
+                            <!-- Map location card 2 -->
+                            <div class="map-location-card-2 bg-secondary rounded-4 w-17 w-xl-20 w-lg-15 w-sm-20 w-md-20 w-xs-25 d-flex flex-column justify-content-between align-items-center p-4 position-absolute">
+                                <span class="fs-4 text-gray-300 fw-bold">Thane</span>
+                                <img src="../images/sun.png" class="img-fluid w-50 h-50">
+                                <span class="fs-5 text-gray-500">15<sup>o</sup></span>
+                                <button class="rounded-pill border fs-7 bg-transparent text-white w-100 p-1"> See detail</button>
+                            </div>
+                            <!-- /Map location card 2 -->
+                            
+                            <!-- Map location card 3 -->
+                            <div class="map-location-card-3 bg-secondary rounded-4 w-17 w-xl-20 w-lg-15 w-sm-20 w-md-20 w-xs-25 d-flex flex-column justify-content-between align-items-center p-4 position-absolute">
+                                <span class="fs-4 text-gray-300 fw-bold">Ghatkopar</span>
+                                <img src="../images/sun.png" class="img-fluid w-100 h-100">
+                                <span class="fs-5 text-gray-500">25<sup>o</sup></span>
+                            </div>
+                            <!-- /Map location card 3 -->
+
+
+                            <!-- Map location card 4 -->
+                            <div class="map-location-card-4 bg-secondary rounded-4 w-17 w-sm-20 w-md-20 w-xs-25 d-flex flex-column justify-content-between align-items-center p-4 position-absolute">
+                                <span class="fs-4 text-gray-300 fw-bold">Dadar</span>
+                                <img src="../images/sun-cloud.png" class="img-fluid w-100 h-100">
+                                <span class="fs-5 text-gray-500">31<sup>o</sup></span>
+                            </div>
+                            <!-- /Map location card 4 -->
+
+                            <!-- Dot markers for locations -->
+                            <div class="map-location-card-1-dot rounded-circle bg-secondary w-2 h-2 position-absolute"></div>
+                            <div class="map-location-card-2-dot rounded-circle bg-secondary w-2 h-2 position-absolute"></div>
+                            <div class="map-location-card-3-dot rounded-circle bg-secondary w-2 h-2 position-absolute"></div>
+                            <div class="map-location-card-4-dot rounded-circle bg-secondary w-2 h-2 position-absolute"></div>
+                            <!-- /Dot markers for locations -->
+                        </div>
+                        <!-- /Map with location cards -->
+                    </div>
+
+                    <!-- Weather summary section -->
+                    <div class="col col-xl-4 col-lg-12 h-100 col-md-12 col-sm-12 my-lg-0  my-4 my-sm-4 my-md-4">
+                        <div class="d-flex justify-content-between align-items-center rounded-4 bg-secondary text-white px-4 mb-3 ps-1">
+                            <div class="d-flex align-items-center gap-2 p-3">
+                                <img src="../images/sun.png" class="img-fluid w-20 h-100">
+                                <div class="d-flex flex-column justify-content-between align-items-start">
+                                    <span class="text-gray-400 fs-4 fw-bold">Thane</span>
+                                    <span class="text-gray-500 fs-6">10:23</span>
+                                </div>
+                            </div>
+                            <span class="fs-2">15<sup>o</sup></span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center rounded-4 bg-secondary text-white px-4 mb-3 ps-1">
+                            <div class="d-flex align-items-center gap-2 p-3">
+                                <img src="../images/sun.png" class="img-fluid w-20 h-100">
+                                <div class="d-flex flex-column justify-content-between align-items-start">
+                                    <span class="text-gray-400 fs-4 fw-bold">Ghatkopar</span>
+                                    <span class="text-gray-500 fs-6">10:23</span>
+                                </div>
+                            </div>
+                            <span class="fs-2">25<sup>o</sup></span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center rounded-4 bg-secondary text-white px-4 mb-3 ps-1">
+                            <div class="d-flex align-items-center gap-2 p-3">
+                                <img src="../images/sun-cloud.png" class="img-fluid w-20 h-100">
+                                <div class="d-flex flex-column justify-content-between align-items-start">
+                                    <span class="text-gray-400 fs-4 fw-bold">Dadar</span>
+                                    <span class="text-gray-500 fs-6">10:23</span>
+                                </div>
+                            </div>
+                            <span class="fs-2">31<sup>o</sup></span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center rounded-4 bg-secondary text-white px-4 mb-3 ps-1">
+                            <div class="d-flex align-items-center gap-2 p-3">
+                                <img src="../images/rainy.png" class="img-fluid w-20 h-100">
+                                <div class="d-flex flex-column justify-content-between align-items-start">
+                                    <span class="text-gray-400 fs-4 fw-bold">Mulund</span>
+                                    <span class="text-gray-500 fs-6">10:23</span>
+                                </div>
+                            </div>
+                            <span class="fs-2">27<sup>o</sup></span>
+                        </div>
+                    </div>
+                    <!-- /Weather summary section -->
+                </div>
+                <!-- /Maps and weather details section -->
+            </div>
+            <!-- /Main content area -->
+        </div>
+    </div>
+    <!-- Main container -->
+
+    <!-- Bootstrap OffCanvas -->
+    <div class="offcanvas offcanvas-start bg-secondary text-white" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header d-flex align-items-center">
+            <div class="d-flex align-items-center gap-1">
+                <img src="../images/logo.png" class="img-fluid w-20">
+                <h5 class="offcanvas-title" id="offcanvasTopLabel">Breeze</h5>
+            </div>
+            <button type="button" class="btn-close btn-close-white w-25 h-25" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <!-- Navigation links -->
+            <ul class="d-flex flex-column gap-4 list-unstyled p-3">
+                <li>
+                    <a href="../index.html"
+                        class="text-decoration-none d-flex gap-2 align-items-center text-gray-500 text-capitalize p-2 fs-6">
+                        <i class="fa-solid fa-cloud-sun-rain"></i>
+                        weather
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="text-decoration-none d-flex gap-2 align-items-center text-capitalize text-gray-500 p-2 fs-6">
+                        <i class="fa-solid fa-list"></i>
+                        cities
+                    </a>
+                </li>
+                <li>
+                    <a href="./maps.html"
+                        class="text-white text-decoration-none d-flex gap-2 align-items-center text-capitalize p-2 fs-6">
+                        <i class="fa-solid fa-map"></i>
+                        maps
+                    </a>
+                </li>
+                <li>
+                    <a href="./settings.html"
+                        class="text-decoration-none d-flex gap-2 align-items-center text-capitalize text-gray-500 p-2 fs-6">
+                        <i class="fa-solid fa-sliders"></i>
+                        settings
+                    </a>
+                </li>
+            </ul>
+            <!-- Navigation links -->
+        </div>
+    </div>
+    <!-- /Bootstrap OffCanvas -->
+
+    <!-- Vendor Js -->
+    <script src="../js/bootstrap.js"></script>
+    <!-- /Vendor Js -->
+    <!-- Custom JS -->
+    <!-- /Custom JS -->
+</body>
+</html>

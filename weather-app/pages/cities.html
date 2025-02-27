@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <!-- /Vendor CSS -->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/font.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- /Custom CSS -->
+</head>
+<body class="bg-primary text-white">
+    <!-- Sidebar for navigation (visible only on large screens) -->
+    <aside class="position-fixed top-0 start-0 h-100 d-sm-none d-md-none d-lg-block d-xl-block d-none">
+        <div class="d-flex flex-column align-items-center py-4 bg-secondary rounded-5 h-100">
+            <div class="d-flex flex-column gap-5">
+                <!-- Logo Section -->
+                <div class="logo mx-auto">
+                    <img src="../images/logo.png" class="w-100 h-100">
+                </div>
+                <!-- Navigation Links -->
+                <ul class="d-flex flex-column gap-4 list-unstyled p-2">
+                    <li>
+                        <a href="../index.html" class="text-decoration-none d-flex flex-column gap-2 align-items-center text-capitalize text-gray-500 p-2 fs-6">
+                            <i class="fa-solid fa-cloud-sun-rain"></i>
+                            weather
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-white text-decoration-none d-flex flex-column gap-2 align-items-center text-capitalize p-2 fs-6">
+                            <i class="fa-solid fa-list"></i>
+                            cities
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./maps.html" class="text-decoration-none d-flex flex-column gap-2 align-items-center text-capitalize text-gray-500 p-2 fs-6">
+                            <i class="fa-solid fa-map"></i>
+                            maps
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./settings.html" class="text-decoration-none d-flex flex-column gap-2 align-items-center text-capitalize text-gray-500 p-2 fs-6">
+                            <i class="fa-solid fa-sliders"></i>
+                            settings
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+    <!-- /Sidebar for navigation (visible only on large screens) -->
+
+    <!-- Main container -->
+    <div class="container my-2 position-relative mx-lg-0 mx-xl-0 mx-xl-0 start-lg-7 start-xl-7">
+        <div class="row py-lg-4 w-100 m-0 p-0">             
+            <!-- Main content area -->
+            <div class="content col col-lg-12 col-md-12 ms-lg-5 p-0">
+                <!-- Hamburger -->
+                <button class="btn d-lg-none d-xl-none d-sm-block d-md-block d-block text-white fs-3 my-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <!-- /Hamburger -->
+
+                <!-- Search bar -->
+                <div class="row">
+                    <div class="col col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div id="alertMsg" class="alert alert-danger fade show" role="alert" style="display: none;">
+                            Enter a valid city name ://
+                        </div>
+                        <form id="cityForm">
+                            <div class="input-group">
+                                <input 
+                                    type="text" 
+                                    class="form-control bg-secondary border-0 p-2 text-white"
+                                    placeholder="Search for cities" 
+                                    aria-label="Username" 
+                                    aria-describedby="basic-addon1"
+                                    id="cityTextField"
+                                />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /Search bar -->
+
+                <!-- Weather cards -->
+                <div class="row my-1 flex-xl-row flex-lg-column flex-sm-column flex-md-column flex-column">
+                    <div id="weatherCards" class="col col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
+                        
+                    </div>
+
+                    <!-- Weather details card -->
+                    <div class="col col-xl-4 col-lg-12 h-50 col-md-12 col-sm-12 mb-2">
+                        <div class="card bg-transparent h-100">
+                            <div class="card-body d-flex flex-column align-items-center gap-2">
+                                <!-- Current weather for Mulund -->
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex flex-column gap-4">
+                                        <div class="d-flex flex-column">
+                                            <span id="currentCityName" class="fs-1 text-white fw-bold">Mumbai</span>
+                                            <span class="fs-6 text-gray-500 text-capitalize">chance of rain: <span id="CurrentPOP">70%</span></span>
+                                        </div>
+                                        <div class="fs-3x text-white fw-bolder"><span id="currentTemp">31<sup>o</sup></span></div>
+                                    </div>
+                                    <img id="currentImg" src="../images/sun.png" class="w-30 img-fluid">
+                                </div>
+                                <!-- /Current weather for Mulund -->
+
+                                <div class="separator w-100 border-gray-600"></div>
+                                
+                                <!-- Today's forecast -->
+                                <div class="card rounded-4 bg-transparent">
+                                    <div class="card-header border-0">
+                                        <div class="card-title text-uppercase text-gray-500 fw-bold fs-7">
+                                            today's forecast
+                                        </div>
+                                    </div>
+                                    <div class="card-body d-flex justify-content-between align-items-center p-3">
+                                        <!-- Sunny -->
+                                        <div class="d-flex flex-column justify-content-between align-items-center">
+                                            <span class="text-gray-500 text-capitalize fw-bold todayTime">6:00 AM</span>
+                                            <img src="../images/sun.png" class="img-fluid todayImg">
+                                            <div class="fs-5 text-white fw-bolder todayTemp">25<sup>o</sup></div>
+                                        </div>
+                                        <!-- /Sunny -->
+                                        <div class="vr border"></div>
+                                        <!-- Sunny -->
+                                        <div class="d-flex flex-column justify-content-between align-items-center">
+                                            <span class="text-gray-500 text-capitalize fw-bold todayTime">6:00 AM</span>
+                                            <img src="../images/sun-cloud.png" class="img-fluid todayImg">
+                                            <div class="fs-4 text-white fw-bolder todayTemp">28<sup>o</sup></div>
+                                        </div>
+                                        <!-- /Sunny -->
+                                        <div class="vr border"></div>
+                                        <!-- Sunny -->
+                                        <div class="d-flex flex-column justify-content-between align-items-center">
+                                            <span class="text-gray-500 text-capitalize fw-bold todayTime">6:00 AM</span>
+                                            <img src="../images/sun.png" class="img-fluid todayImg">
+                                            <div class="fs-4 text-white fw-bolder todayTemp">33<sup>o</sup></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /Today's forecast -->
+
+                                <div class="separator w-100 border-gray-600"></div>
+
+                                <!-- 3-day forecast -->
+                                <div class="card rounded-4 pb-4 bg-transparent">
+                                    <div class="card-header border-0">
+                                        <div class="card-title text-uppercase text-gray-500 fw-bold fs-7">
+                                            3-day-forecast
+                                        </div>
+                                    </div>
+                                    <div class="card-body py-0">
+                                        <!-- Sunny -->
+                                        <div class="d-flex justify-content-between align-items-center text-white w-100 p-2">
+                                            <span class="text-gray-500 text-capitalize w-20 day">today</span>
+                                            <div class="w-40">
+                                                <div class="d-flex justify-content-between align-items-center gap-2 w-40 h-40">
+                                                    <img src="../images/sun.png" class="img-fluid futureImg">
+                                                    <span class="text-gray-400 fw-bold text-capitalize desc">sunny</span>
+                                                </div>
+                                            </div>
+                                            <div class="text-gray-500">
+                                                <span class="fw-bold text-gray-400 futureTempHigh">36</span><span class="futureTempLow">/22</span>
+                                            </div>
+                                        </div>
+                                        <!-- /Sunny -->
+                                        <div class="separator border-gray-700"></div>
+                                        <!-- Sunny -->
+                                        <div class="d-flex justify-content-between align-items-center text-white w-100 p-2">
+                                            <span class="text-gray-500 text-capitalize w-20 day">tue</span>
+                                            <div class="w-40">
+                                                <div class="d-flex justify-content-between align-items-center gap-2 w-40 h-40">
+                                                    <img src="../images/sun.png" class="img-fluid futureImg">
+                                                    <span class="text-gray-400 fw-bold text-capitalize desc">sunny</span>
+                                                </div>
+                                            </div>
+                                            <div class="text-gray-500">
+                                                <span class="fw-bold text-gray-400 futureTempHigh">37</span><span class="futureTempLow">/21</span>
+                                            </div>
+                                        </div>
+                                        <!-- /Sunny -->
+                                        <div class="separator border-gray-700"></div>
+                                        <!-- Sunny -->
+                                        <div class="d-flex justify-content-between align-items-center text-white w-100 p-2">
+                                            <span class="text-gray-500 text-capitalize w-20 day">wed</span>
+                                            <div class="w-40">
+                                                <div class="d-flex justify-content-between align-items-center gap-2 w-40 h-40">
+                                                    <img src="../images/sun.png" class="img-fluid futureImg">
+                                                    <span class="text-gray-400 fw-bold text-capitalize desc">sunny</span>
+                                                </div>
+                                            </div>
+                                            <div class="text-gray-500">
+                                                <span class="fw-bold text-gray-400 futureTempHigh">37</span><span class="futureTempLow">/21</span>
+                                            </div>
+                                        </div>
+                                        <!-- /Sunny -->
+                                    </div>
+                                </div>
+                                <!-- 3-day forecast -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Weather details card -->
+                </div>
+                <!-- /Weather cards -->
+            </div>
+            <!-- /Main content area -->
+        </div>
+    </div>
+    <!-- /Main container -->
+
+    <!-- Bootstrap OffCanvas -->
+    <div class="offcanvas offcanvas-start bg-secondary text-white" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header d-flex align-items-center">
+            <div class="d-flex align-items-center gap-1">
+                <img src="../images/logo.png" class="img-fluid w-20">
+                <h5 class="offcanvas-title text-active-white" id="offcanvasTopLabel">Breeze</h5>
+            </div>
+            <button type="button" class="btn-close btn-close-white w-25 h-25" data-bs-dismiss="offcanvas" aria-label="Close" style="color: white;"></button>
+        </div>
+        <div class="offcanvas-body">
+            <!-- Navigation links -->
+            <ul class="d-flex flex-column gap-4 list-unstyled p-3">
+                <li>
+                    <a href="../index.html"
+                        class="text-decoration-none d-flex gap-2 align-items-center text-gray-500 text-capitalize p-2 fs-6">
+                        <i class="fa-solid fa-cloud-sun-rain"></i>
+                        weather
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="text-white text-decoration-none d-flex gap-2 align-items-center text-capitalize p-2 fs-6">
+                        <i class="fa-solid fa-list"></i>
+                        cities
+                    </a>
+                </li>
+                <li>
+                    <a href="./maps.html"
+                        class="text-white text-decoration-none d-flex gap-2 align-items-center text-capitalize text-gray-500 p-2 fs-6">
+                        <i class="fa-solid fa-map"></i>
+                        maps
+                    </a>
+                </li>
+                <li>
+                    <a href="./settings.html"
+                        class="text-white text-decoration-none d-flex gap-2 align-items-center text-capitalize text-gray-500 p-2 fs-6">
+                        <i class="fa-solid fa-sliders"></i>
+                        settings
+                    </a>
+                </li>
+            </ul>
+            <!-- Navigation links -->
+        </div>
+    </div>
+    <!-- /Bootstrap OffCanvas -->
+
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/sl-http.js"></script>
+    <script src="../js/metrics.js"></script>
+    <script src="../js/cities.js"></script>
+</body>
+
+</html>
